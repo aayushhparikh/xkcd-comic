@@ -22,7 +22,7 @@ function App() {
 
   const readCom = (number) => {
     try {
-      axios.get("https://cors-anywhere.herokuapp.com/http://xkcd.com/info.0.json")
+      axios.get("https://cors-anywhere.herokuapp.com/http://xkcd.com/614/info.0.json")
       .then(res => setCom(res.data))
     } catch (error) {
       console.log(error)
@@ -38,6 +38,9 @@ function App() {
   return (
     <div className="App">
       {com.title}
+      <button onClick={() => readCom()}>
+        next
+      </button>
       <img src={com.img} />
     </div>
   );
