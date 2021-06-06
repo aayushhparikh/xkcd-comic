@@ -8,8 +8,8 @@ function App() {
 
   const xkcdAPI = async() => {
     try {
-      //https://cors-anywhere.herokuapp.com/ allows for cross-origin requests to xkcd
-      axios.get("https://cors-anywhere.herokuapp.com/http://xkcd.com/info.0.json")
+      //https://corsporxy-xkcd.herokuapp.com/ allows for cross-origin requests to xkcd
+      axios.get("https://corsporxy-xkcd.herokuapp.com/http://xkcd.com/info.0.json")
       .then(res => setCom(res.data))
     } catch (error) {
       console.log(error)
@@ -22,7 +22,7 @@ function App() {
 
   const readCom = (number) => {
     try {
-      axios.get("https://cors-anywhere.herokuapp.com/http://xkcd.com/" + number + "/info.0.json")
+      axios.get("https://corsporxy-xkcd.herokuapp.com/http://xkcd.com/" + number + "/info.0.json")
       .then(res => setCom(res.data))
     } catch (error) {
       console.log(error)
