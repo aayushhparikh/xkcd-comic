@@ -6,26 +6,28 @@ function App() {
 
   const [com, setCom] = useState()
 
-  useEffect(() => {
-    //https://cors-anywhere.herokuapp.com/ allows for cross-origin requests to xkcd
+  const xkcdAPI = async() => {
     try {
-      axios.get("https://cors-anywhere.herokuapp.com/http:/xkcd.com/info.0.json")
-      .then(res => setCom(res.data))
-    } catch (error) {
-      console.log(error)
-    }
-
-  }, [])
-
-  const readCom = (number) => {
-    try {
-      axios.get("https://cors-anywhere.herokuapp.com/http:/xkcd.com/info.0.json")
+      //https://cors-anywhere.herokuapp.com/ allows for cross-origin requests to xkcd
+      axios.get("https://cors-anywhere.herokuapp.com/http://xkcd.com/info.0.json")
       .then(res => setCom(res.data))
     } catch (error) {
       console.log(error)
     }
   }
 
+  useEffect(() => {
+    xkcdAPI()
+  }, [])
+
+  const readCom = (number) => {
+    try {
+      axios.get("https://cors-anywhere.herokuapp.com/http://xkcd.com/info.0.json")
+      .then(res => setCom(res.data))
+    } catch (error) {
+      console.log(error)
+    }}
+    
   //lets com have a value when called
   if(!com) {
     return (
