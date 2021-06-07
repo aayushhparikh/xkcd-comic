@@ -6,6 +6,7 @@ function App() {
 
   const [com, setCom] = useState()
   const [newCom, setNewCom] = useState()
+  const [comNum, setComNum] = useState(null)
 
   const xkcdAPI = async() => {
     try {
@@ -28,18 +29,24 @@ function App() {
     }
   }
 
-  const randomCom = async() => {
+  const randomComNum = async() => {
    try {
      const num = Math.floor(Math.random() * (newCom - 1) + 1)
      readCom(num)
+     return num
    } catch (error) {
      console.log(error)
    }
   }
 
   useEffect(() => {
-    xkcdAPI()
-  }, [])
+    if (comNum === null) {
+      newestCom()
+      xkcdAPI()
+    } else {
+      readCom(comNum)
+    } 
+  }, [comNum])
 
   useEffect(() => {
     newestCom()
@@ -66,18 +73,18 @@ function App() {
       <p>
         {com.year}, {com.month}, {com.day}
       </p>
-      <button onClick={() => readCom(com.num - 1)}>
+      <button onClick={() => setComNum(com.num - 1)}>
         previous
       </button>
-      <button onClick={() => randomCom()}>
+      <button onClick={() => setComNum(randomComNum)}>
         random
       </button>
       <button 
       disabled={com.num === newCom}
-      onClick={() => readCom(com.num + 1)}>
+      onClick={() => setComNum(com.num + 1)}>
         next
       </button>
-      <img src={com.img} />
+      <img src={com.img} title={com.alt} alt={com.title}/>
     </div>
   );
 }
