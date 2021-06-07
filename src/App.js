@@ -28,6 +28,16 @@ function App() {
     }
   }
 
+  const randomCom = async() => {
+   try {
+     const num = Math.floor(Math.random() * (newCom - 1) + 1)
+     readCom(num)
+     console.log(num)
+   } catch (error) {
+     console.log(error)
+   }
+  }
+
   useEffect(() => {
     xkcdAPI()
   }, [])
@@ -59,6 +69,9 @@ function App() {
       </p>
       <button onClick={() => readCom(com.num - 1)}>
         previous
+      </button>
+      <button onClick={() => randomCom()}>
+        random
       </button>
       <button 
       disabled={com.num === newCom}
