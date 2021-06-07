@@ -54,21 +54,26 @@ function App() {
   
   return (
     <div className="App">
-      {com.title}
-      <p>
-        {com.year}, {com.month}, {com.day}
-      </p>
-      <button onClick={() => setComNum(com.num - 1)}>
+      <div className="main">
+        {com.title}
+      </div>
+      <div className="middle">
+        <button 
+        onClick={() => setComNum(com.num - 1)}>
         previous
-      </button>
-      <button onClick={() => setComNum(randomComNum)}>
+        </button>
+        <button onClick={() => setComNum(randomComNum)}>
         random
-      </button>
-      <button 
-      disabled={com.num === newCom}
-      onClick={() => setComNum(com.num + 1)}>
+        </button>
+        <button 
+          disabled={com.num === newCom}
+          onClick={() => setComNum(com.num + 1)}>
         next
-      </button>
+        </button>
+      </div>
+      <div className="img">
+        {com.year}, {com.month}, {com.day}
+      </div>
       <img src={com.img} title={com.alt} alt={com.title}/>
     </div>
   );
