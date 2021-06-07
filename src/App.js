@@ -9,24 +9,12 @@ function App() {
   const [comNum, setComNum] = useState(null)
 
   const xkcdAPI = async() => {
-    try {
       //https://corsporxy-xkcd.herokuapp.com/ allows for cross-origin requests to xkcd
       axios.get("https://corsporxy-xkcd.herokuapp.com/http://xkcd.com/info.0.json")
-      .then(res => 
-        setCom(res.data))
-    }catch (error) {
-      console.log(error)
-    }
-  }
-
-  const newestCom = async() => {
-    try {
-      //https://corsporxy-xkcd.herokuapp.com/ allows for cross-origin requests to xkcd
-      axios.get("https://corsporxy-xkcd.herokuapp.com/http://xkcd.com/info.0.json")
-      .then(res => setNewCom(res.data.num))
-    }catch (error) {
-      console.log(error)
-    }
+      .then(res => {
+        setCom(res.data)
+        setNewCom(res.data.num)})
+        .catch (error => {console.log(error)})   
   }
 
   const randomComNum = async() => {
@@ -41,16 +29,11 @@ function App() {
 
   useEffect(() => {
     if (comNum === null) {
-      newestCom()
       xkcdAPI()
     } else {
       readCom(comNum)
     } 
   }, [comNum])
-
-  useEffect(() => {
-    newestCom()
-  }, [])
 
   const readCom = (number) => {
     try {
