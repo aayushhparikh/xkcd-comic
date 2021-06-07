@@ -9,12 +9,14 @@ function App() {
   const [comNum, setComNum] = useState(null)
 
   const xkcdAPI = async() => {
-      //https://corsporxy-xkcd.herokuapp.com/ allows for cross-origin requests to xkcd
+    try {
       axios.get("https://corsporxy-xkcd.herokuapp.com/http://xkcd.com/info.0.json")
       .then(res => {
         setCom(res.data)
         setNewCom(res.data.num)})
-        .catch (error => {console.log(error)})   
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const randomComNum = async() => {
