@@ -13,7 +13,16 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App .main {
+  display: flex;
+  font-size: calc(20px + 3vmin)
 }
+
+.App .middle .button {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  padding: 30px;
+}
+
 

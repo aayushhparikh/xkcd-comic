@@ -71,8 +71,8 @@ function App() {
         next
         </button>
       </div>
-      <div className="img">
-        {com.year}, {com.month}, {com.day}
+      <div className="info">
+        {com.year}, {com.month}, {com.day} {com.num}
       </div>
       <img src={com.img} title={com.alt} alt={com.title}/>
     </div>
