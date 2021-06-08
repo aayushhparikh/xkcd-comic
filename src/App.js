@@ -72,7 +72,7 @@ function App() {
         </button>
       </div>
       <div className="info">
-        {com.year}, {com.month}, {com.day} {com.num}
+        {com.year}, {com.month}, {com.day}, {com.num}, {com.count}
       </div>
       <img src={com.img} title={com.alt} alt={com.title}/>
     </div>
