@@ -3,7 +3,8 @@ import './Com.css';
 import axios from 'axios'
 
 const Com = (props) => {
-
+  console.log("COM PROPS", props)
+  const comNumb = props.match.params.comNumb
   const [com, setCom] = useState()
   const [newCom, setNewCom] = useState()
   const [comNum, setComNum] = useState(null)
@@ -38,12 +39,12 @@ const Com = (props) => {
     }}
 
   useEffect(() => {
-    if (comNum === null) {
-      xkcdAPI()
+    if (comNumb === null) {
+      xkcdAPI(comNumb)
     } else {
-      readCom(comNum)
+      readCom(comNumb)
     } 
-  }, [comNum])
+  }, [comNumb])
 
 
   //lets com have a value when called

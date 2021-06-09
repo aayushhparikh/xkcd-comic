@@ -7,7 +7,8 @@ function App() {
 
  return (
   <div className="App">
-    <Com />
+    <Route path="/" component={Com}/>
+    <Route path="/:comNumb" component={Com}/>
   </div>
  )
    
