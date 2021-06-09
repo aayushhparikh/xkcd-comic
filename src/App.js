@@ -7,8 +7,10 @@ function App() {
 
  return (
   <div className="App">
-    <Route path="/" component={Com}/>
+    <Switch>
     <Route path="/:comNumb" component={Com}/>
+    <Route path="/" component={Com}/>
+    </Switch>
   </div>
  )
    

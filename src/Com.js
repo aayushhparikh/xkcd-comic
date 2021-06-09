@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import './Com.css';
 import axios from 'axios'
 
 const Com = (props) => {
-  console.log("COM PROPS", props)
+    console.log("COM PROPS", props)
   const comNumb = props.match.params.comNumb
   const [com, setCom] = useState()
   const [newCom, setNewCom] = useState()
   const [comNum, setComNum] = useState(null)
+
+  const hist = useHistory()
 
   const xkcdAPI = async() => {
     try {
@@ -39,8 +42,8 @@ const Com = (props) => {
     }}
 
   useEffect(() => {
-    if (comNumb === null) {
-      xkcdAPI(comNumb)
+    if (comNumb === undefined) {
+      xkcdAPI()
     } else {
       readCom(comNumb)
     } 
@@ -61,7 +64,7 @@ const Com = (props) => {
       </div>
       <div className="middle">
         <button 
-        onClick={() => setComNum(com.num - 1)}>
+        onClick={() => hist.push('/' + (com.num - 1))}>
         previous
         </button>
         <button onClick={() => setComNum(randomComNum)}>
@@ -69,7 +72,7 @@ const Com = (props) => {
         </button>
         <button 
           disabled={com.num === newCom}
-          onClick={() => setComNum(com.num + 1)}>
+          onClick={() => hist.push('/' + (com.num + 1))}>
         next
         </button>
       </div>
