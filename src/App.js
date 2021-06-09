@@ -29,6 +29,14 @@ function App() {
    }
   }
 
+  const readCom = (number) => {
+    try {
+      axios.get("https://corsporxy-xkcd.herokuapp.com/http://xkcd.com/" + number + "/info.0.json")
+      .then(res => setCom(res.data))
+    } catch (error) {
+      console.log(error)
+    }}
+
   useEffect(() => {
     if (comNum === null) {
       xkcdAPI()
@@ -37,14 +45,7 @@ function App() {
     } 
   }, [comNum])
 
-  const readCom = (number) => {
-    try {
-      axios.get("https://corsporxy-xkcd.herokuapp.com/http://xkcd.com/" + number + "/info.0.json")
-      .then(res => setCom(res.data))
-    } catch (error) {
-      console.log(error)
-    }}
-    
+
   //lets com have a value when called
   if(!com) {
     return (
@@ -72,7 +73,7 @@ function App() {
         </button>
       </div>
       <div className="info">
-        {com.year}, {com.month}, {com.day}, {com.num}, {com.count}
+        {com.year}, {com.month}, {com.day}, {com.num}
       </div>
       <img src={com.img} title={com.alt} alt={com.title}/>
     </div>
